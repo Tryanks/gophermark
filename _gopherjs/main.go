@@ -3,13 +3,16 @@ package main
 import (
 	"bytes"
 	"github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/extension"
 	"github.com/gopherjs/gopherjs/js"
 )
 
 var markdownParser gophermark.Markdown
 
 func main() {
-	markdownParser = gophermark.New()
+	markdownParser = gophermark.New(gophermark.WithExtensions(
+		extension.GFM,
+	))
 	js.Global.Set("convertMarkdownToHTML", ConvertMarkdownToHTML)
 }
 
