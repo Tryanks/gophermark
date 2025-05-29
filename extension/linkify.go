@@ -4,11 +4,11 @@ import (
 	"bytes"
 	"regexp"
 
-	"github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/ast"
-	"github.com/yuin/goldmark/parser"
-	"github.com/yuin/goldmark/text"
-	"github.com/yuin/goldmark/util"
+	"github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/ast"
+	"github.com/Tryanks/gophermark/parser"
+	"github.com/Tryanks/gophermark/text"
+	"github.com/Tryanks/gophermark/util"
 )
 
 var wwwURLRegxp = regexp.MustCompile(`^www\.[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-z]+(?:[/#?][-a-zA-Z0-9@:%_\+.~#!?&/=\(\);,'">\^{}\[\]` + "`" + `]*)?`) //nolint:golint,lll
@@ -307,13 +307,13 @@ var Linkify = &linkify{}
 
 // NewLinkify creates a new [goldmark.Extender] that
 // allow you to parse text that seems like a URL.
-func NewLinkify(opts ...LinkifyOption) goldmark.Extender {
+func NewLinkify(opts ...LinkifyOption) gophermark.Extender {
 	return &linkify{
 		options: opts,
 	}
 }
 
-func (e *linkify) Extend(m goldmark.Markdown) {
+func (e *linkify) Extend(m gophermark.Markdown) {
 	m.Parser().AddOptions(
 		parser.WithInlineParsers(
 			util.Prioritized(NewLinkifyParser(e.options...), 999),

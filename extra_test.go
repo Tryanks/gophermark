@@ -1,4 +1,4 @@
-package goldmark_test
+package gophermark_test
 
 import (
 	"bytes"
@@ -8,11 +8,11 @@ import (
 	"testing"
 	"time"
 
-	. "github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/ast"
-	"github.com/yuin/goldmark/parser"
-	"github.com/yuin/goldmark/renderer/html"
-	"github.com/yuin/goldmark/testutil"
+	. "github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/ast"
+	"github.com/Tryanks/gophermark/parser"
+	"github.com/Tryanks/gophermark/renderer/html"
+	"github.com/Tryanks/gophermark/testutil"
 )
 
 var testTimeoutMultiplier = 1.0

@@ -4,17 +4,17 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/renderer/html"
-	"github.com/yuin/goldmark/testutil"
+	"github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/renderer/html"
+	"github.com/Tryanks/gophermark/testutil"
 )
 
 func TestLinkify(t *testing.T) {
-	markdown := goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown := gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			Linkify,
 		),
 	)
@@ -22,12 +22,12 @@ func TestLinkify(t *testing.T) {
 }
 
 func TestLinkifyWithAllowedProtocols(t *testing.T) {
-	markdown := goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown := gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithXHTML(),
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewLinkify(
 				WithLinkifyAllowedProtocols([]string{
 					"ssh:",
@@ -50,12 +50,12 @@ func TestLinkifyWithAllowedProtocols(t *testing.T) {
 }
 
 func TestLinkifyWithWWWRegexp(t *testing.T) {
-	markdown := goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown := gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithXHTML(),
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewLinkify(
 				WithLinkifyWWWRegexp(
 					regexp.MustCompile(`www\.example\.com`),
@@ -75,12 +75,12 @@ func TestLinkifyWithWWWRegexp(t *testing.T) {
 }
 
 func TestLinkifyWithEmailRegexp(t *testing.T) {
-	markdown := goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown := gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithXHTML(),
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewLinkify(
 				WithLinkifyEmailRegexp(
 					regexp.MustCompile(`user@example\.com`),

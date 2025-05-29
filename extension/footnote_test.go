@@ -3,21 +3,21 @@ package extension
 import (
 	"testing"
 
-	"github.com/yuin/goldmark"
-	gast "github.com/yuin/goldmark/ast"
-	"github.com/yuin/goldmark/parser"
-	"github.com/yuin/goldmark/renderer/html"
-	"github.com/yuin/goldmark/testutil"
-	"github.com/yuin/goldmark/text"
-	"github.com/yuin/goldmark/util"
+	"github.com/Tryanks/gophermark"
+	gast "github.com/Tryanks/gophermark/ast"
+	"github.com/Tryanks/gophermark/parser"
+	"github.com/Tryanks/gophermark/renderer/html"
+	"github.com/Tryanks/gophermark/testutil"
+	"github.com/Tryanks/gophermark/text"
+	"github.com/Tryanks/gophermark/util"
 )
 
 func TestFootnote(t *testing.T) {
-	markdown := goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown := gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			Footnote,
 		),
 	)
@@ -32,11 +32,11 @@ func (a *footnoteID) Transform(node *gast.Document, reader text.Reader, pc parse
 }
 
 func TestFootnoteOptions(t *testing.T) {
-	markdown := goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown := gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewFootnote(
 				WithFootnoteIDPrefix("article12-"),
 				WithFootnoteLinkClass("link-class"),
@@ -80,16 +80,16 @@ Another one.[^2]
 		t,
 	)
 
-	markdown = goldmark.New(
-		goldmark.WithParserOptions(
+	markdown = gophermark.New(
+		gophermark.WithParserOptions(
 			parser.WithASTTransformers(
 				util.Prioritized(&footnoteID{}, 100),
 			),
 		),
-		goldmark.WithRendererOptions(
+		gophermark.WithRendererOptions(
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewFootnote(
 				WithFootnoteIDPrefixFunction(func(n gast.Node) []byte {
 					v, ok := n.OwnerDocument().Meta()["footnote-prefix"]

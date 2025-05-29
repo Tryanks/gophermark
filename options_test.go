@@ -1,11 +1,11 @@
-package goldmark_test
+package gophermark_test
 
 import (
 	"testing"
 
-	. "github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/parser"
-	"github.com/yuin/goldmark/testutil"
+	. "github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/parser"
+	"github.com/Tryanks/gophermark/testutil"
 )
 
 func TestAttributeAndAutoHeadingID(t *testing.T) {

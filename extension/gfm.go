@@ -1,7 +1,7 @@
 package extension
 
 import (
-	"github.com/yuin/goldmark"
+	"github.com/Tryanks/gophermark"
 )
 
 type gfm struct {
@@ -10,7 +10,7 @@ type gfm struct {
 // GFM is an extension that provides Github Flavored markdown functionalities.
 var GFM = &gfm{}
 
-func (e *gfm) Extend(m goldmark.Markdown) {
+func (e *gfm) Extend(m gophermark.Markdown) {
 	Linkify.Extend(m)
 	Table.Extend(m)
 	Strikethrough.Extend(m)

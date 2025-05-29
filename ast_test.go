@@ -1,13 +1,13 @@
-package goldmark_test
+package gophermark_test
 
 import (
 	"bytes"
 	"testing"
 
-	. "github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/ast"
-	"github.com/yuin/goldmark/testutil"
-	"github.com/yuin/goldmark/text"
+	. "github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/ast"
+	"github.com/Tryanks/gophermark/testutil"
+	"github.com/Tryanks/gophermark/text"
 )
 
 func TestASTBlockNodeText(t *testing.T) {

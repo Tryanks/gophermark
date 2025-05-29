@@ -6,25 +6,25 @@ import (
 	"os"
 	"testing"
 
-	"github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/extension"
-	"github.com/yuin/goldmark/parser"
-	"github.com/yuin/goldmark/renderer/html"
-	"github.com/yuin/goldmark/util"
+	"github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/extension"
+	"github.com/Tryanks/gophermark/parser"
+	"github.com/Tryanks/gophermark/renderer/html"
+	"github.com/Tryanks/gophermark/util"
 )
 
 func fuzz(f *testing.F) {
 	f.Fuzz(func(t *testing.T, orig string) {
-		markdown := goldmark.New(
-			goldmark.WithParserOptions(
+		markdown := gophermark.New(
+			gophermark.WithParserOptions(
 				parser.WithAutoHeadingID(),
 				parser.WithAttribute(),
 			),
-			goldmark.WithRendererOptions(
+			gophermark.WithRendererOptions(
 				html.WithUnsafe(),
 				html.WithXHTML(),
 			),
-			goldmark.WithExtensions(
+			gophermark.WithExtensions(
 				extension.DefinitionList,
 				extension.Footnote,
 				extension.GFM,

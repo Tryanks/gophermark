@@ -1,14 +1,14 @@
 package extension
 
 import (
-	"github.com/yuin/goldmark"
-	gast "github.com/yuin/goldmark/ast"
-	"github.com/yuin/goldmark/extension/ast"
-	"github.com/yuin/goldmark/parser"
-	"github.com/yuin/goldmark/renderer"
-	"github.com/yuin/goldmark/renderer/html"
-	"github.com/yuin/goldmark/text"
-	"github.com/yuin/goldmark/util"
+	"github.com/Tryanks/gophermark"
+	gast "github.com/Tryanks/gophermark/ast"
+	"github.com/Tryanks/gophermark/extension/ast"
+	"github.com/Tryanks/gophermark/parser"
+	"github.com/Tryanks/gophermark/renderer"
+	"github.com/Tryanks/gophermark/renderer/html"
+	"github.com/Tryanks/gophermark/text"
+	"github.com/Tryanks/gophermark/util"
 )
 
 type strikethroughDelimiterProcessor struct {
@@ -108,7 +108,7 @@ type strikethrough struct {
 // Strikethrough is an extension that allow you to use strikethrough expression like '~~text~~' .
 var Strikethrough = &strikethrough{}
 
-func (e *strikethrough) Extend(m goldmark.Markdown) {
+func (e *strikethrough) Extend(m gophermark.Markdown) {
 	m.Parser().AddOptions(parser.WithInlineParsers(
 		util.Prioritized(NewStrikethroughParser(), 500),
 	))

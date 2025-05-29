@@ -5,10 +5,10 @@ import (
 	"io/ioutil"
 	"testing"
 
+	"github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/renderer/html"
+	"github.com/Tryanks/gophermark/util"
 	gomarkdown "github.com/gomarkdown/markdown"
-	"github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/renderer/html"
-	"github.com/yuin/goldmark/util"
 	"gitlab.com/golang-commonmark/markdown"
 
 	"github.com/russross/blackfriday/v2"
@@ -26,8 +26,8 @@ func BenchmarkMarkdown(b *testing.B) {
 	})
 
 	b.Run("GoldMark", func(b *testing.B) {
-		markdown := goldmark.New(
-			goldmark.WithRendererOptions(html.WithXHTML(), html.WithUnsafe()),
+		markdown := gophermark.New(
+			gophermark.WithRendererOptions(html.WithXHTML(), html.WithUnsafe()),
 		)
 		r := func(src []byte) ([]byte, error) {
 			var out bytes.Buffer

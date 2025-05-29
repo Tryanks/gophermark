@@ -1,14 +1,14 @@
 // Package goldmark implements functions to convert markdown text to a desired format.
-package goldmark
+package gophermark
 
 import (
 	"io"
 
-	"github.com/yuin/goldmark/parser"
-	"github.com/yuin/goldmark/renderer"
-	"github.com/yuin/goldmark/renderer/html"
-	"github.com/yuin/goldmark/text"
-	"github.com/yuin/goldmark/util"
+	"github.com/Tryanks/gophermark/parser"
+	"github.com/Tryanks/gophermark/renderer"
+	"github.com/Tryanks/gophermark/renderer/html"
+	"github.com/Tryanks/gophermark/text"
+	"github.com/Tryanks/gophermark/util"
 )
 
 // DefaultParser returns a new Parser that is configured by default values.

@@ -5,14 +5,14 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/yuin/goldmark"
-	gast "github.com/yuin/goldmark/ast"
-	"github.com/yuin/goldmark/extension/ast"
-	"github.com/yuin/goldmark/parser"
-	"github.com/yuin/goldmark/renderer"
-	"github.com/yuin/goldmark/renderer/html"
-	"github.com/yuin/goldmark/text"
-	"github.com/yuin/goldmark/util"
+	"github.com/Tryanks/gophermark"
+	gast "github.com/Tryanks/gophermark/ast"
+	"github.com/Tryanks/gophermark/extension/ast"
+	"github.com/Tryanks/gophermark/parser"
+	"github.com/Tryanks/gophermark/renderer"
+	"github.com/Tryanks/gophermark/renderer/html"
+	"github.com/Tryanks/gophermark/text"
+	"github.com/Tryanks/gophermark/util"
 )
 
 var footnoteListKey = parser.NewContextKey()
@@ -667,13 +667,13 @@ var Footnote = &footnote{
 }
 
 // NewFootnote returns a new extension with given options.
-func NewFootnote(opts ...FootnoteOption) goldmark.Extender {
+func NewFootnote(opts ...FootnoteOption) gophermark.Extender {
 	return &footnote{
 		options: opts,
 	}
 }
 
-func (e *footnote) Extend(m goldmark.Markdown) {
+func (e *footnote) Extend(m gophermark.Markdown) {
 	m.Parser().AddOptions(
 		parser.WithBlockParsers(
 			util.Prioritized(NewFootnoteBlockParser(), 999),

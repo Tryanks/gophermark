@@ -1,9 +1,9 @@
 package extension
 
 import (
-	"github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/parser"
-	"github.com/yuin/goldmark/renderer/html"
+	"github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/parser"
+	"github.com/Tryanks/gophermark/renderer/html"
 )
 
 // A CJKOption sets options for CJK support mostly for HTML based renderers.
@@ -52,7 +52,7 @@ type cjk struct {
 var CJK = NewCJK(WithEastAsianLineBreaks(), WithEscapedSpace())
 
 // NewCJK returns a new extension with given options.
-func NewCJK(opts ...CJKOption) goldmark.Extender {
+func NewCJK(opts ...CJKOption) gophermark.Extender {
 	e := &cjk{
 		EastAsianLineBreaks: EastAsianLineBreaksNone,
 	}
@@ -62,7 +62,7 @@ func NewCJK(opts ...CJKOption) goldmark.Extender {
 	return e
 }
 
-func (e *cjk) Extend(m goldmark.Markdown) {
+func (e *cjk) Extend(m gophermark.Markdown) {
 	m.Renderer().AddOptions(html.WithEastAsianLineBreaks(
 		html.EastAsianLineBreaks(e.EastAsianLineBreaks)))
 	if e.EscapedSpace {

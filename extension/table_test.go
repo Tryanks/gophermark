@@ -3,23 +3,23 @@ package extension
 import (
 	"testing"
 
-	"github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/ast"
-	east "github.com/yuin/goldmark/extension/ast"
-	"github.com/yuin/goldmark/parser"
-	"github.com/yuin/goldmark/renderer/html"
-	"github.com/yuin/goldmark/testutil"
-	"github.com/yuin/goldmark/text"
-	"github.com/yuin/goldmark/util"
+	"github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/ast"
+	east "github.com/Tryanks/gophermark/extension/ast"
+	"github.com/Tryanks/gophermark/parser"
+	"github.com/Tryanks/gophermark/renderer/html"
+	"github.com/Tryanks/gophermark/testutil"
+	"github.com/Tryanks/gophermark/text"
+	"github.com/Tryanks/gophermark/util"
 )
 
 func TestTable(t *testing.T) {
-	markdown := goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown := gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithUnsafe(),
 			html.WithXHTML(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			Table,
 		),
 	)
@@ -27,12 +27,12 @@ func TestTable(t *testing.T) {
 }
 
 func TestTableWithAlignDefault(t *testing.T) {
-	markdown := goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown := gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithXHTML(),
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewTable(
 				WithTableCellAlignMethod(TableCellAlignDefault),
 			),
@@ -66,11 +66,11 @@ bar | baz
 		t,
 	)
 
-	markdown = goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown = gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewTable(
 				WithTableCellAlignMethod(TableCellAlignDefault),
 			),
@@ -106,12 +106,12 @@ bar | baz
 }
 
 func TestTableWithAlignAttribute(t *testing.T) {
-	markdown := goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown := gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithXHTML(),
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewTable(
 				WithTableCellAlignMethod(TableCellAlignAttribute),
 			),
@@ -145,11 +145,11 @@ bar | baz
 		t,
 	)
 
-	markdown = goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown = gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewTable(
 				WithTableCellAlignMethod(TableCellAlignAttribute),
 			),
@@ -193,12 +193,12 @@ func (a *tableStyleTransformer) Transform(node *ast.Document, reader text.Reader
 }
 
 func TestTableWithAlignStyle(t *testing.T) {
-	markdown := goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown := gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithXHTML(),
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewTable(
 				WithTableCellAlignMethod(TableCellAlignStyle),
 			),
@@ -232,11 +232,11 @@ bar | baz
 		t,
 	)
 
-	markdown = goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown = gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewTable(
 				WithTableCellAlignMethod(TableCellAlignStyle),
 			),
@@ -270,16 +270,16 @@ bar | baz
 		t,
 	)
 
-	markdown = goldmark.New(
-		goldmark.WithParserOptions(
+	markdown = gophermark.New(
+		gophermark.WithParserOptions(
 			parser.WithASTTransformers(
 				util.Prioritized(&tableStyleTransformer{}, 0),
 			),
 		),
-		goldmark.WithRendererOptions(
+		gophermark.WithRendererOptions(
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewTable(
 				WithTableCellAlignMethod(TableCellAlignStyle),
 			),
@@ -316,12 +316,12 @@ bar | baz
 }
 
 func TestTableWithAlignNone(t *testing.T) {
-	markdown := goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown := gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithXHTML(),
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewTable(
 				WithTableCellAlignMethod(TableCellAlignNone),
 			),
@@ -357,12 +357,12 @@ bar | baz
 }
 
 func TestTableFuzzedPanics(t *testing.T) {
-	markdown := goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown := gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithXHTML(),
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewTable(),
 		),
 	)

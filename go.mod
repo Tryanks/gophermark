@@ -1,3 +1,3 @@
-module github.com/yuin/goldmark
+module github.com/Tryanks/gophermark
 
 go 1.22

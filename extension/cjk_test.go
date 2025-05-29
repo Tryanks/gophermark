@@ -3,13 +3,13 @@ package extension
 import (
 	"testing"
 
-	"github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/renderer/html"
-	"github.com/yuin/goldmark/testutil"
+	"github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/renderer/html"
+	"github.com/Tryanks/gophermark/testutil"
 )
 
 func TestEscapedSpace(t *testing.T) {
-	markdown := goldmark.New(goldmark.WithRendererOptions(
+	markdown := gophermark.New(gophermark.WithRendererOptions(
 		html.WithXHTML(),
 		html.WithUnsafe(),
 	))
@@ -38,11 +38,11 @@ func TestEscapedSpace(t *testing.T) {
 	)
 
 	// Enables EscapedSpace
-	markdown = goldmark.New(goldmark.WithRendererOptions(
+	markdown = gophermark.New(gophermark.WithRendererOptions(
 		html.WithXHTML(),
 		html.WithUnsafe(),
 	),
-		goldmark.WithExtensions(NewCJK(WithEscapedSpace())),
+		gophermark.WithExtensions(NewCJK(WithEscapedSpace())),
 	)
 
 	no = 3
@@ -60,11 +60,11 @@ func TestEscapedSpace(t *testing.T) {
 	// ' ' triggers Linkify extension inline parser.
 	// Escaped spaces should not trigger the inline parser.
 
-	markdown = goldmark.New(goldmark.WithRendererOptions(
+	markdown = gophermark.New(gophermark.WithRendererOptions(
 		html.WithXHTML(),
 		html.WithUnsafe(),
 	),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewCJK(WithEscapedSpace()),
 			Linkify,
 		),
@@ -84,7 +84,7 @@ func TestEscapedSpace(t *testing.T) {
 }
 
 func TestEastAsianLineBreaks(t *testing.T) {
-	markdown := goldmark.New(goldmark.WithRendererOptions(
+	markdown := gophermark.New(gophermark.WithRendererOptions(
 		html.WithXHTML(),
 		html.WithUnsafe(),
 	))
@@ -102,11 +102,11 @@ func TestEastAsianLineBreaks(t *testing.T) {
 
 	// Enables EastAsianLineBreaks
 
-	markdown = goldmark.New(goldmark.WithRendererOptions(
+	markdown = gophermark.New(gophermark.WithRendererOptions(
 		html.WithXHTML(),
 		html.WithUnsafe(),
 	),
-		goldmark.WithExtensions(NewCJK(WithEastAsianLineBreaks())),
+		gophermark.WithExtensions(NewCJK(WithEastAsianLineBreaks())),
 	)
 
 	no = 2
@@ -158,12 +158,12 @@ func TestEastAsianLineBreaks(t *testing.T) {
 	)
 
 	// WithHardWraps take precedence over WithEastAsianLineBreaks
-	markdown = goldmark.New(goldmark.WithRendererOptions(
+	markdown = gophermark.New(gophermark.WithRendererOptions(
 		html.WithHardWraps(),
 		html.WithXHTML(),
 		html.WithUnsafe(),
 	),
-		goldmark.WithExtensions(NewCJK(WithEastAsianLineBreaks())),
+		gophermark.WithExtensions(NewCJK(WithEastAsianLineBreaks())),
 	)
 	no = 6
 	testutil.DoTestCase(
@@ -178,11 +178,11 @@ func TestEastAsianLineBreaks(t *testing.T) {
 	)
 
 	// Tests with EastAsianLineBreaksStyleSimple
-	markdown = goldmark.New(goldmark.WithRendererOptions(
+	markdown = gophermark.New(gophermark.WithRendererOptions(
 		html.WithXHTML(),
 		html.WithUnsafe(),
 	),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewCJK(WithEastAsianLineBreaks()),
 			Linkify,
 		),
@@ -222,11 +222,11 @@ func TestEastAsianLineBreaks(t *testing.T) {
 	)
 
 	// Tests with EastAsianLineBreaksCSS3Draft
-	markdown = goldmark.New(goldmark.WithRendererOptions(
+	markdown = gophermark.New(gophermark.WithRendererOptions(
 		html.WithXHTML(),
 		html.WithUnsafe(),
 	),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			NewCJK(WithEastAsianLineBreaks(EastAsianLineBreaksCSS3Draft)),
 		),
 	)

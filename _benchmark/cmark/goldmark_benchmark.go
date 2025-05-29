@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/renderer/html"
+	"github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/renderer/html"
 )
 
 func main() {
@@ -25,7 +25,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	markdown := goldmark.New(goldmark.WithRendererOptions(html.WithXHTML(), html.WithUnsafe()))
+	markdown := gophermark.New(gophermark.WithRendererOptions(html.WithXHTML(), html.WithUnsafe()))
 	var out bytes.Buffer
 	markdown.Convert([]byte(""), &out)
 

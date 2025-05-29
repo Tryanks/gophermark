@@ -1,13 +1,13 @@
-package goldmark_test
+package gophermark_test
 
 import (
 	"encoding/json"
 	"os"
 	"testing"
 
-	. "github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/renderer/html"
-	"github.com/yuin/goldmark/testutil"
+	. "github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/renderer/html"
+	"github.com/Tryanks/gophermark/testutil"
 )
 
 type commonmarkSpecTestCase struct {

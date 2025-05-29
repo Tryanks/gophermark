@@ -13,9 +13,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/parser"
-	"github.com/yuin/goldmark/util"
+	"github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/parser"
+	"github.com/Tryanks/gophermark/util"
 )
 
 // TestingT is a subset of the functionality provided by testing.T.
@@ -86,7 +86,7 @@ func ParseCliCaseArg() []int {
 }
 
 // DoTestCaseFile runs test cases in a given file.
-func DoTestCaseFile(m goldmark.Markdown, filename string, t TestingT, no ...int) {
+func DoTestCaseFile(m gophermark.Markdown, filename string, t TestingT, no ...int) {
 	fp, err := os.Open(filename)
 	if err != nil {
 		panic(err)
@@ -178,14 +178,14 @@ func DoTestCaseFile(m goldmark.Markdown, filename string, t TestingT, no ...int)
 }
 
 // DoTestCases runs a set of test cases.
-func DoTestCases(m goldmark.Markdown, cases []MarkdownTestCase, t TestingT, opts ...parser.ParseOption) {
+func DoTestCases(m gophermark.Markdown, cases []MarkdownTestCase, t TestingT, opts ...parser.ParseOption) {
 	for _, testCase := range cases {
 		DoTestCase(m, testCase, t, opts...)
 	}
 }
 
 // DoTestCase runs a test case.
-func DoTestCase(m goldmark.Markdown, testCase MarkdownTestCase, t TestingT, opts ...parser.ParseOption) {
+func DoTestCase(m gophermark.Markdown, testCase MarkdownTestCase, t TestingT, opts ...parser.ParseOption) {
 	var ok bool
 	var out bytes.Buffer
 	defer func() {

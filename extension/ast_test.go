@@ -4,10 +4,10 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/renderer/html"
-	"github.com/yuin/goldmark/testutil"
-	"github.com/yuin/goldmark/text"
+	"github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/renderer/html"
+	"github.com/Tryanks/gophermark/testutil"
+	"github.com/Tryanks/gophermark/text"
 )
 
 func TestASTBlockNodeText(t *testing.T) {
@@ -55,11 +55,11 @@ a
 	for _, cs := range cases {
 		t.Run(cs.Name, func(t *testing.T) {
 			s := []byte(cs.Source)
-			md := goldmark.New(
-				goldmark.WithRendererOptions(
+			md := gophermark.New(
+				gophermark.WithRendererOptions(
 					html.WithUnsafe(),
 				),
-				goldmark.WithExtensions(
+				gophermark.WithExtensions(
 					DefinitionList,
 					Table,
 				),
@@ -102,11 +102,11 @@ func TestASTInlineNodeText(t *testing.T) {
 	for _, cs := range cases {
 		t.Run(cs.Name, func(t *testing.T) {
 			s := []byte(cs.Source)
-			md := goldmark.New(
-				goldmark.WithRendererOptions(
+			md := gophermark.New(
+				gophermark.WithRendererOptions(
 					html.WithUnsafe(),
 				),
-				goldmark.WithExtensions(
+				gophermark.WithExtensions(
 					Strikethrough,
 				),
 			)

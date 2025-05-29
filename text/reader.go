@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"unicode/utf8"
 
-	"github.com/yuin/goldmark/util"
+	"github.com/Tryanks/gophermark/util"
 )
 
 const invalidValue = -1

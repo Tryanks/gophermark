@@ -1,6 +1,8 @@
 goldmark
 ==========================================
 
+> This project is a fork of [goldmark](https://github.com/yuin/goldmark) with Go downgraded to 1.19 and generics removed to ensure compatibility with [GopherJS](https://github.com/gopherjs/gopherjs). To use this package, run: `go get github.com/Tryanks/gophermark`
+
 [![https://pkg.go.dev/github.com/yuin/goldmark](https://pkg.go.dev/badge/github.com/yuin/goldmark.svg)](https://pkg.go.dev/github.com/yuin/goldmark)
 [![https://github.com/yuin/goldmark/actions?query=workflow:test](https://github.com/yuin/goldmark/actions/workflows/test.yaml/badge.svg?branch=master&event=push)](https://github.com/yuin/goldmark/actions?query=workflow:test)
 [![https://coveralls.io/github/yuin/goldmark](https://coveralls.io/repos/github/yuin/goldmark/badge.svg?branch=master)](https://coveralls.io/github/yuin/goldmark)

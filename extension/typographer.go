@@ -3,11 +3,11 @@ package extension
 import (
 	"unicode"
 
-	"github.com/yuin/goldmark"
-	gast "github.com/yuin/goldmark/ast"
-	"github.com/yuin/goldmark/parser"
-	"github.com/yuin/goldmark/text"
-	"github.com/yuin/goldmark/util"
+	"github.com/Tryanks/gophermark"
+	gast "github.com/Tryanks/gophermark/ast"
+	"github.com/Tryanks/gophermark/parser"
+	"github.com/Tryanks/gophermark/text"
+	"github.com/Tryanks/gophermark/util"
 )
 
 var uncloseCounterKey = parser.NewContextKey()
@@ -335,13 +335,13 @@ type typographer struct {
 var Typographer = &typographer{}
 
 // NewTypographer returns a new Extender that replaces punctuations with typographic entities.
-func NewTypographer(opts ...TypographerOption) goldmark.Extender {
+func NewTypographer(opts ...TypographerOption) gophermark.Extender {
 	return &typographer{
 		options: opts,
 	}
 }
 
-func (e *typographer) Extend(m goldmark.Markdown) {
+func (e *typographer) Extend(m gophermark.Markdown) {
 	m.Parser().AddOptions(parser.WithInlineParsers(
 		util.Prioritized(NewTypographerParser(e.options...), 9999),
 	))

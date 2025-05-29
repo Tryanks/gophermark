@@ -3,17 +3,17 @@ package extension
 import (
 	"testing"
 
-	"github.com/yuin/goldmark"
-	"github.com/yuin/goldmark/renderer/html"
-	"github.com/yuin/goldmark/testutil"
+	"github.com/Tryanks/gophermark"
+	"github.com/Tryanks/gophermark/renderer/html"
+	"github.com/Tryanks/gophermark/testutil"
 )
 
 func TestDefinitionList(t *testing.T) {
-	markdown := goldmark.New(
-		goldmark.WithRendererOptions(
+	markdown := gophermark.New(
+		gophermark.WithRendererOptions(
 			html.WithUnsafe(),
 		),
-		goldmark.WithExtensions(
+		gophermark.WithExtensions(
 			DefinitionList,
 		),
 	)
